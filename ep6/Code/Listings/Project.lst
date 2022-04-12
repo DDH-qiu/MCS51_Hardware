@@ -1,0 +1,63 @@
+C51 COMPILER V9.59.0.0   PROJECT                                                           04/01/2022 22:03:24 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE PROJECT
+OBJECT MODULE PLACED IN .\Objects\Project.obj
+COMPILER INVOKED BY: C:\Program Files\MDK\C51\BIN\C51.EXE Project.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\Project.lst) TABS(2) OBJECT(.\Objects\Project.obj)
+
+line level    source
+
+   1          /**
+   2          Title:静态数码管
+   3          Authors:DDH-qiu
+   4          Date:2022-4-1
+   5          Abstract:一位输出静态数码管
+   6          **/
+   7          
+   8          #include"reg51.h"
+   9          unsigned char s[]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f};//共阴0-9
+  10          
+  11          void delay(unsigned int n)
+  12          {
+  13   1        unsigned int i=0,j=0;
+  14   1        for(i=0;i<n;i++)
+  15   1        {
+  16   2          for(j=0;j<120;j++);
+  17   2        }
+  18   1      }
+  19          
+  20          void seg()
+  21          {
+  22   1        int i=0;
+  23   1        for(i=0;i<10;i++)
+  24   1        {
+  25   2          P2=s[i];//取出字码
+  26   2          P1=~s[i];
+  27   2          delay(1000);
+  28   2        }
+  29   1      }
+  30          
+  31          void main()
+  32          {
+  33   1        while(1)
+  34   1        {
+  35   2          seg();
+  36   2        }
+  37   1      }
+  38          //数码管有共阴极和共阳极接法两种
+  39          //数码管静态显示
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     71    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

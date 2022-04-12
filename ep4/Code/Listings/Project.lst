@@ -1,0 +1,56 @@
+A51 MACRO ASSEMBLER  PROJECT                                                              03/31/2022 22:23:23 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Project.obj
+ASSEMBLER INVOKED BY: C:\Program Files\MDK\C51\BIN\A51.EXE Project.a51 SET(SMALL) DEBUG PRINT(.\Listings\Project.lst) OB
+                      JECT(.\Objects\Project.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ;-----------------
+                       2     ;Title:汇编命令验证
+                       3     ;Authors:DDH-qiu
+                       4     ;Date:2022-3-22
+                       5     ;Abstract:验证一些汇编命令
+                       6     ;-----------------
+0000                   7     ORG 0000H
+  0090                 8             LED BIT P1.0
+  0000                 9                     LEDBUF BIT 0
+0000 020030           10                             LJMP START
+0003                  11                             ORG 0003H
+0003 C0D0             12                                     INTERRUPT:PUSH PSW
+0005 B200             13                                     CPL LEDBUF
+0007 A200             14                                     MOV C,LEDBUF
+0009 9290             15                                     MOV LED,C
+000B D0D0             16                                     POP PSW
+000D 32               17                                     RETI
+0030                  18                                     ORG 0030H
+0030 C200             19                                             START:CLR LEDBUF
+0032 C290             20                                             CLR LED
+0034 758801           21                                             MOV TCON,#01H
+0037 75A881           22                                             MOV IE,#81H
+003A 02003A           23                                             LJMP $
+                      24                                                     END
+A51 MACRO ASSEMBLER  PROJECT                                                              03/31/2022 22:23:23 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+IE . . . . . . . .  D ADDR   00A8H   A   
+INTERRUPT. . . . .  C ADDR   0003H   A   
+LED. . . . . . . .  B ADDR   0090H.0 A   
+LEDBUF . . . . . .  B ADDR   0020H.0 A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+START. . . . . . .  C ADDR   0030H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

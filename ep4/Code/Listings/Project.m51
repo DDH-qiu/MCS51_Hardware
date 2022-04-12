@@ -1,0 +1,56 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    03/31/2022  22:23:23  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\PROGRAM FILES\MDK\C51\BIN\BL51.EXE .\Objects\Project.obj TO .\Objects\Project PRINT (.\Listings\Project.m51) RAMSIZE 
+>> (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\Project.obj (PROJECT)
+
+
+LINK MAP OF MODULE:  .\Objects\Project (PROJECT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     003DH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Project (PROJECT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PROJECT
+  D:00A8H         SYMBOL        IE
+  C:0003H         SYMBOL        INTERRUPT
+  B:0090H.0       SYMBOL        LED
+  B:0020H.0       SYMBOL        LEDBUF
+  D:0090H         SYMBOL        P1
+  D:00D0H         SYMBOL        PSW
+  C:0030H         SYMBOL        START
+  D:0088H         SYMBOL        TCON
+  C:0000H         LINE#         10
+  C:0003H         LINE#         12
+  C:0005H         LINE#         13
+  C:0007H         LINE#         14
+  C:0009H         LINE#         15
+  C:000BH         LINE#         16
+  C:000DH         LINE#         17
+  C:0030H         LINE#         19
+  C:0032H         LINE#         20
+  C:0034H         LINE#         21
+  C:0037H         LINE#         22
+  C:003AH         LINE#         23
+  -------         ENDMOD        PROJECT
+
+Program Size: data=8.0 xdata=0 code=61
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
