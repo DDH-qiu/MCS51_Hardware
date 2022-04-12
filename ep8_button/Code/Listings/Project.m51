@@ -1,0 +1,133 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/12/2022  23:01:39  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\PROGRAM FILES\MDK\C51\BIN\BL51.EXE .\Objects\Project.obj TO .\Objects\Project PRINT (.\Listings\Project.m51) RAMSIZE 
+>> (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\Project.obj (PROJECT)
+  C:\PROGRAM FILES\MDK\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\PROGRAM FILES\MDK\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Project (PROJECT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000CH     UNIT         ?DT?PROJECT
+            IDATA   0014H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0020H     UNIT         ?PR?_DELAY?PROJECT
+            CODE    00AFH     0018H     UNIT         ?PR?KEY?PROJECT
+            CODE    00C7H     0013H     UNIT         ?C_INITSEG
+            CODE    00DAH     0011H     UNIT         ?PR?SEG?PROJECT
+            CODE    00EBH     0008H     UNIT         ?PR?MAIN?PROJECT
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Project (PROJECT)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?PROJECT
+  +--> ?C_INITSEG
+
+?PR?MAIN?PROJECT
+  +--> ?PR?KEY?PROJECT
+  +--> ?PR?SEG?PROJECT
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Project (PROJECT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PROJECT
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/12/2022  23:01:39  PAGE 2
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:008FH         PUBLIC        _delay
+  D:0008H         PUBLIC        flag
+  C:00EBH         PUBLIC        main
+  C:00DAH         PUBLIC        seg
+  C:00AFH         PUBLIC        key
+  D:0009H         PUBLIC        num
+  D:000AH         PUBLIC        s
+  B:0090H.0       PUBLIC        key0
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        n
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:008FH         LINE#         15
+  C:008FH         LINE#         16
+  C:008FH         LINE#         17
+  C:0092H         LINE#         18
+  C:0099H         LINE#         19
+  C:0099H         LINE#         20
+  C:00A7H         LINE#         21
+  C:00AEH         LINE#         22
+  -------         ENDPROC       _DELAY
+  -------         PROC          KEY
+  C:00AFH         LINE#         26
+  C:00AFH         LINE#         27
+  C:00AFH         LINE#         36
+  C:00B6H         LINE#         37
+  C:00B6H         LINE#         38
+  C:00B9H         LINE#         39
+  C:00B9H         LINE#         40
+  C:00C2H         LINE#         41
+  C:00C2H         LINE#         42
+  C:00C4H         LINE#         43
+  C:00C6H         LINE#         44
+  C:00C6H         LINE#         45
+  -------         ENDPROC       KEY
+  -------         PROC          SEG
+  C:00DAH         LINE#         49
+  C:00DAH         LINE#         50
+  C:00DAH         LINE#         51
+  C:00E2H         LINE#         52
+  C:00E8H         LINE#         53
+  C:00E8H         LINE#         54
+  C:00EAH         LINE#         55
+  C:00EAH         LINE#         57
+  -------         ENDPROC       SEG
+  -------         PROC          MAIN
+  C:00EBH         LINE#         61
+  C:00EBH         LINE#         62
+  C:00EBH         LINE#         63
+  C:00EBH         LINE#         64
+  C:00EBH         LINE#         66
+  C:00EEH         LINE#         67
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/12/2022  23:01:39  PAGE 3
+
+
+  C:00F1H         LINE#         68
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        PROJECT
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?PROJECT
+
+Program Size: data=21.0 xdata=0 code=243
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
