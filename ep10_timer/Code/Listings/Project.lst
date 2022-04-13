@@ -1,0 +1,77 @@
+C51 COMPILER V9.59.0.0   PROJECT                                                           04/13/2022 21:58:34 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE PROJECT
+OBJECT MODULE PLACED IN .\Objects\Project.obj
+COMPILER INVOKED BY: C:\Program Files\MDK\C51\BIN\C51.EXE Project.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\Project.lst) TABS(2) OBJECT(.\Objects\Project.obj)
+
+line level    source
+
+   1          /**
+   2          Title:定时器应用
+   3          Authors:DDH-qiu
+   4          Date:2022-4-13
+   5          Abstract:定时器应用
+   6          **/
+   7          #include"reg51.h"
+   8          unsigned char count=0;
+   9          unsigned char num=0;
+  10          unsigned char s[]={0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F,0x77,0x7c,0x39,0x5e,0x79,0x71};//段�
+             -��表
+  11          
+  12          void init_timer()//定时器初始化
+  13          {
+  14   1        TMOD=0x01;//0000 0001定时器T0模式1
+  15   1        TH0=(65536-500000)/256;//高八位除以256，将初值>>8得到高八位
+  16   1        TL0=(65535-50000)%256;
+  17   1        ET0=1;//开启定时器T0的中断
+  18   1        EA=1;//开启总中断
+  19   1        TR0=1;//定时器启动在TCON中
+  20   1      }
+  21          
+  22          //显示函数
+  23          void display()
+  24          {
+  25   1        P2=s[num];
+  26   1        if(num==16){num=0;}
+  27   1      }
+  28          
+  29          void main()
+  30          {
+  31   1        init_timer();
+  32   1        while(1)//等待中断
+  33   1        {
+  34   2          display();
+  35   2        }
+  36   1      }
+  37          
+  38          void timer_isr() interrupt 1 //中断标号interupt，0表示外部中断，1表示定时器中断0，2表
+             -示外部中断1，3表示定时器中断1，4表示串口中断
+  39          {
+  40   1        TH0=(65536-50000)/256;//将定时初值归初
+  41   1        TL0=(65535-50000)%256;
+  42   1        count++;//段码数组
+  43   1        if (count==20)//定时循环定时1s
+  44   1        {
+  45   2          num++;
+  46   2          count=0;
+  47   2        }
+  48   1        
+  49   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+C51 COMPILER V9.59.0.0   PROJECT                                                           04/13/2022 21:58:34 PAGE 2   
+
+   CODE SIZE        =     64    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     18    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

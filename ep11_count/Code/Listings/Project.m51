@@ -1,0 +1,118 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/13/2022  22:23:52  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\PROGRAM FILES\MDK\C51\BIN\BL51.EXE .\Objects\Project.obj TO .\Objects\Project PRINT (.\Listings\Project.m51) RAMSIZE 
+>> (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\Project.obj (PROJECT)
+  C:\PROGRAM FILES\MDK\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\PROGRAM FILES\MDK\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Project (PROJECT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0011H     UNIT         ?DT?PROJECT
+            IDATA   0019H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0008H     UNIT         ?PR?MAIN?PROJECT
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    009AH     0013H     UNIT         ?C_INITSEG
+            CODE    00ADH     0011H     UNIT         ?PR?DISPLAY?PROJECT
+            CODE    00BEH     0010H     UNIT         ?PR?INIT_COUNTER?PROJECT
+            CODE    00CEH     0003H     UNIT         ?PR?COUNTER_ISR?PROJECT
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Project (PROJECT)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?PROJECT
+  +--> ?C_INITSEG
+
+?PR?MAIN?PROJECT
+  +--> ?PR?INIT_COUNTER?PROJECT
+  +--> ?PR?DISPLAY?PROJECT
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Project (PROJECT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/13/2022  22:23:52  PAGE 2
+
+
+  -------         MODULE        PROJECT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  B:00A8H.7       PUBLIC        EA
+  C:00BEH         PUBLIC        init_counter
+  C:0003H         PUBLIC        main
+  C:00CEH         PUBLIC        counter_isr
+  D:0089H         PUBLIC        TMOD
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  D:0008H         PUBLIC        num
+  B:0088H.4       PUBLIC        TR0
+  D:0009H         PUBLIC        s
+  C:00ADH         PUBLIC        display
+  -------         PROC          INIT_COUNTER
+  C:00BEH         LINE#         11
+  C:00BEH         LINE#         12
+  C:00BEH         LINE#         13
+  C:00C1H         LINE#         14
+  C:00C4H         LINE#         15
+  C:00C7H         LINE#         16
+  C:00C9H         LINE#         17
+  C:00CBH         LINE#         18
+  C:00CDH         LINE#         19
+  -------         ENDPROC       INIT_COUNTER
+  -------         PROC          DISPLAY
+  C:00ADH         LINE#         21
+  C:00ADH         LINE#         22
+  C:00ADH         LINE#         23
+  C:00B5H         LINE#         24
+  C:00BBH         LINE#         25
+  C:00BBH         LINE#         26
+  C:00BDH         LINE#         27
+  C:00BDH         LINE#         28
+  -------         ENDPROC       DISPLAY
+  -------         PROC          MAIN
+  C:0003H         LINE#         30
+  C:0003H         LINE#         31
+  C:0003H         LINE#         32
+  C:0006H         LINE#         33
+  C:0006H         LINE#         34
+  C:0006H         LINE#         35
+  C:0009H         LINE#         36
+  -------         ENDPROC       MAIN
+  -------         PROC          COUNTER_ISR
+  C:00CEH         LINE#         39
+  C:00CEH         LINE#         41
+  C:00D0H         LINE#         42
+  -------         ENDPROC       COUNTER_ISR
+  -------         ENDMOD        PROJECT
+
+Program Size: data=26.0 xdata=0 code=209
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
