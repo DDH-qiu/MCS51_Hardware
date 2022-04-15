@@ -1,0 +1,165 @@
+C51 COMPILER V9.59.0.0   PROJECT                                                           04/16/2022 00:33:17 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE PROJECT
+OBJECT MODULE PLACED IN .\Objects\Project.obj
+COMPILER INVOKED BY: C:\Program Files\MDK\C51\BIN\C51.EXE Project.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\Project.lst) TABS(2) OBJECT(.\Objects\Project.obj)
+
+line level    source
+
+   1          /**
+   2          Title:
+   3          Authors:DDH-qiu
+   4          Date:2022-
+   5          Abstract:
+   6          **/
+   7          #include"reg51.h"
+   8          sbit RS=P3^0;
+   9          sbit RW=P3^1;
+  10          sbit E=P3^2;
+  11          unsigned char i=0;
+  12          unsigned char count;
+  13          unsigned int hour=0,min=0,sec=0;
+  14          unsigned char str[]={"0123456789"};
+  15          
+  16          //延时子程序
+  17          void delay(unsigned int t)
+  18          {
+  19   1        unsigned int i=0,j=0;
+  20   1        for(i=0;i<t;i++)
+  21   1        {
+  22   2          for(j=0;j<120;j++);
+  23   2        }
+  24   1      }
+  25          
+  26          //写指令码
+  27          void writecom(unsigned char com)
+  28          {
+  29   1        RS=0;
+  30   1        RW=0;
+  31   1        E=0;
+  32   1        P2=com;
+  33   1        delay(5);
+  34   1        E=1;
+  35   1        E=0;
+  36   1      }
+  37          
+  38          //写数据
+  39          void writedat(unsigned char dat)
+  40          {
+  41   1        RS=1;
+  42   1        RW=0;
+  43   1        E=0;
+  44   1        P2=dat;
+  45   1        delay(5);
+  46   1        E=1;
+  47   1        E=0;
+  48   1      }
+  49          
+  50          //lcd初始化设置
+  51          void init_lcd()
+  52          {
+  53   1        writecom(0x38);//设置16x2显示，5x7点阵，8位数据接口
+  54   1        writecom(0x0c);//设置开显示，不显示光标
+C51 COMPILER V9.59.0.0   PROJECT                                                           04/16/2022 00:33:17 PAGE 2   
+
+  55   1        writecom(0x06);//写一个字符后地址指针加1
+  56   1        writecom(0x01);//显示清0，数据指针清0
+  57   1      }
+  58          
+  59          //显示函数，显示时间
+  60          void display()
+  61          {
+  62   1        unsigned char temp0=0,temp1=0,temp2=0,temp3=0,temp4=0,temp5=0;//拆分字符做准备
+  63   1        //拆字
+  64   1        temp0=hour/10;
+  65   1        temp1=hour%10;
+  66   1        temp2=min/10;
+  67   1        temp3=min%10;
+  68   1        temp4=sec/10;
+  69   1        temp5=sec%10;
+  70   1        writecom(0x80);
+  71   1        delay(5);
+  72   1        writedat(str[temp0]);
+  73   1        delay(5);
+  74   1        writedat(str[temp1]);
+  75   1        delay(5);
+  76   1        writedat(':');
+  77   1        delay(5);
+  78   1        writedat(str[temp2]);
+  79   1        delay(5);
+  80   1        writedat(str[temp3]);
+  81   1        delay(5);
+  82   1        writedat(':');
+  83   1        delay(5);
+  84   1        writedat(str[temp4]);
+  85   1        delay(5);
+  86   1        writedat(str[temp5]);
+  87   1        delay(5);
+  88   1      }
+  89          
+  90          //定时器初始化
+  91          void init_timer()
+  92          {
+  93   1        TMOD=0x01;
+  94   1        TH0=(65536-50000)/256;//50MS
+  95   1        TL0=(65536-50000)%256;
+  96   1        ET0=1;
+  97   1        EA=1;
+  98   1        TR0=1;
+  99   1      }
+ 100          
+ 101          void main()
+ 102          {
+ 103   1        init_lcd();
+ 104   1        init_timer();
+ 105   1        while(1)
+ 106   1        {
+ 107   2          display();
+ 108   2        }
+ 109   1      }
+ 110          
+ 111          
+ 112          //定时器中断服务
+ 113          void timer0_isr() interrupt 1
+ 114          {
+ 115   1        TH0=(65536-50000)/256;
+ 116   1        TL0=(65536-50000)%256;
+C51 COMPILER V9.59.0.0   PROJECT                                                           04/16/2022 00:33:17 PAGE 3   
+
+ 117   1        count++;
+ 118   1        if(count==20)//50毫秒循环20次
+ 119   1        {
+ 120   2          sec=sec+1;
+ 121   2          count=0;
+ 122   2        }
+ 123   1        if(sec==60)
+ 124   1        {
+ 125   2          min=min+1;
+ 126   2          sec=0;//秒
+ 127   2        }
+ 128   1        if(min==60)
+ 129   1        {
+ 130   2          hour=hour+1;
+ 131   2          min=0;//分
+ 132   2        }
+ 133   1        if(hour==24)
+ 134   1        {
+ 135   2          hour=0;//时
+ 136   2        }   
+ 137   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    375    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     19       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
