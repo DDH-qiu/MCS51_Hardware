@@ -1,8 +1,8 @@
 /**
-Title:
+Title:数字时钟
 Authors:DDH-qiu
-Date:2022-
-Abstract:
+Date:2022-4-15
+Abstract:51单片机实现数字时钟
 **/
 #include"reg51.h"
 sbit RS=P3^0;
