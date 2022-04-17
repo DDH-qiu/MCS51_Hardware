@@ -1,0 +1,65 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/17/2022  21:15:46  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\PROGRAM FILES\MDK\C51\BIN\BL51.EXE .\Objects\Project.obj TO .\Objects\Project PRINT (.\Listings\Project.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\Project.obj (PROJECT)
+  C:\PROGRAM FILES\MDK\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\Project (PROJECT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     000CH     UNIT         ?C_C51STARTUP
+            CODE    000FH     0002H     UNIT         ?PR?MAIN?PROJECT
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Project (PROJECT)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?PROJECT
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Project (PROJECT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PROJECT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:000FH         PUBLIC        main
+  -------         PROC          MAIN
+  C:000FH         LINE#         9
+  C:000FH         LINE#         10
+  C:000FH         LINE#         11
+  C:000FH         LINE#         12
+  C:000FH         LINE#         14
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        PROJECT
+
+Program Size: data=9.0 xdata=0 code=17
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/17/2022  21:15:46  PAGE 2
+
+
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

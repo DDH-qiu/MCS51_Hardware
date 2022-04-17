@@ -1,8 +1,8 @@
 /**
-Title:
+Title:AD转换
 Authors:DDH-qiu
-Date:2022-
-Abstract:
+Date:2022-4-16
+Abstract:实现电子电压表
 **/
 #include"reg51.h"
 sbit start=P3^0;

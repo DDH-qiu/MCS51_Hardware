@@ -1,0 +1,156 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/17/2022  16:51:20  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\PROGRAM FILES\MDK\C51\BIN\BL51.EXE .\Objects\Project.obj TO .\Objects\Project PRINT (.\Listings\Project.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\Project.obj (PROJECT)
+  C:\PROGRAM FILES\MDK\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\PROGRAM FILES\MDK\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Project (PROJECT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         ?DT?PROJECT
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0005H     UNIT         ?PR?MAIN?PROJECT
+                    0008H     0003H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    009AH     0037H     UNIT         ?PR?TIMER_ISR?PROJECT
+            CODE    00D1H     0022H     UNIT         ?PR?STEPPER?PROJECT
+            CODE    00F3H     0020H     UNIT         ?PR?_DELAY?PROJECT
+            CODE    0113H     0011H     UNIT         ?C_INITSEG
+            CODE    0124H     0010H     UNIT         ?PR?INIT_TIMER?PROJECT
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Project (PROJECT)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?PROJECT
+  +--> ?C_INITSEG
+
+?PR?MAIN?PROJECT
+  +--> ?PR?INIT_TIMER?PROJECT
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Project (PROJECT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/17/2022  16:51:20  PAGE 2
+
+
+  -------         MODULE        PROJECT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  B:00B0H.4       PUBLIC        T0
+  B:00A8H.7       PUBLIC        EA
+  C:00D1H         PUBLIC        stepper
+  C:00F3H         PUBLIC        _delay
+  C:0003H         PUBLIC        main
+  D:0008H         PUBLIC        count
+  D:0089H         PUBLIC        TMOD
+  C:0124H         PUBLIC        init_timer
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  D:0009H         PUBLIC        num
+  C:009AH         PUBLIC        timer_isr
+  B:0088H.4       PUBLIC        TR0
+  D:000AH         PUBLIC        st
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        n
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:00F3H         LINE#         12
+  C:00F3H         LINE#         13
+  C:00F3H         LINE#         14
+  C:00F6H         LINE#         15
+  C:00FDH         LINE#         16
+  C:00FDH         LINE#         17
+  C:010BH         LINE#         18
+  C:0112H         LINE#         19
+  -------         ENDPROC       _DELAY
+  -------         PROC          STEPPER
+  -------         DO            
+  D:0082H         SYMBOL        i
+  -------         ENDDO         
+  C:00D1H         LINE#         22
+  C:00D1H         LINE#         23
+  C:00D1H         LINE#         24
+  C:00D1H         LINE#         25
+  C:00D4H         LINE#         26
+  C:00D4H         LINE#         27
+  C:00DDH         LINE#         28
+  C:00E4H         LINE#         29
+  C:00F2H         LINE#         31
+  -------         ENDPROC       STEPPER
+  -------         PROC          INIT_TIMER
+  C:0124H         LINE#         34
+  C:0124H         LINE#         35
+  C:0124H         LINE#         36
+  C:0127H         LINE#         37
+  C:012AH         LINE#         38
+  C:012DH         LINE#         39
+  C:012FH         LINE#         40
+  C:0131H         LINE#         41
+  C:0133H         LINE#         42
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/17/2022  16:51:20  PAGE 3
+
+
+  -------         ENDPROC       INIT_TIMER
+  -------         PROC          MAIN
+  C:0003H         LINE#         44
+  C:0003H         LINE#         45
+  C:0003H         LINE#         46
+  C:0006H         LINE#         47
+  C:0006H         LINE#         48
+  C:0006H         LINE#         50
+  -------         ENDPROC       MAIN
+  -------         PROC          TIMER_ISR
+  C:009AH         LINE#         55
+  C:00A5H         LINE#         57
+  C:00A8H         LINE#         58
+  C:00AAH         LINE#         59
+  C:00ACH         LINE#         60
+  C:00B2H         LINE#         63
+  C:00B2H         LINE#         64
+  C:00BDH         LINE#         65
+  C:00C3H         LINE#         66
+  C:00C3H         LINE#         67
+  C:00C5H         LINE#         68
+  C:00C5H         LINE#         69
+  C:00C8H         LINE#         70
+  C:00C8H         LINE#         71
+  -------         ENDPROC       TIMER_ISR
+  -------         ENDMOD        PROJECT
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?STEPPER?PROJECT
+
+Program Size: data=19.0 xdata=0 code=305
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

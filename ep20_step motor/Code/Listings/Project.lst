@@ -1,0 +1,97 @@
+C51 COMPILER V9.59.0.0   PROJECT                                                           04/17/2022 16:51:20 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE PROJECT
+OBJECT MODULE PLACED IN .\Objects\Project.obj
+COMPILER INVOKED BY: C:\Program Files\MDK\C51\BIN\C51.EXE Project.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\Project.lst) TABS(2) OBJECT(.\Objects\Project.obj)
+
+line level    source
+
+   1          /**
+   2          Title:控制步进电机
+   3          Authors:DDH-qiu
+   4          Date:2022-4-17
+   5          Abstract:控制步进电机的运动
+   6          **/
+   7          #include"reg51.h"
+   8          #define uchar unsigned char
+   9          uchar st[]={0x09,0x08,0x0c,0x04,0x06,0x02,0x03,0x01};//八步法控制步进电机的控制信号
+  10          uchar count=0,num=0;
+  11          
+  12          void delay(unsigned int n)
+  13          {
+  14   1        int i=0,j=0;
+  15   1        for(i=0;i<n;i++)
+  16   1        {
+  17   2          for(j=0;j<120;j++);
+  18   2        }
+  19   1      }
+  20          
+  21          //步进电机函数
+  22          void stepper()
+  23          {
+  24   1        int i=0;
+  25   1        for(i=7;i>0;i-- )
+  26   1        {
+  27   2          P2=st[i];
+  28   2          delay(10);
+  29   2        }
+  30   1      
+  31   1      }
+  32          
+  33          //定时器初始化
+  34          void init_timer()
+  35          {
+  36   1        TMOD=0X01;
+  37   1        TH0=(65536-50000)/256;
+  38   1        TL0=(65536-50000)%256;
+  39   1        ET0=1;
+  40   1        EA=1;
+  41   1        TR0=1;
+  42   1      }
+  43          
+  44          void main()
+  45          {
+  46   1        init_timer();
+  47   1        while(1)
+  48   1        {
+  49   2          // stepper();
+  50   2        }
+  51   1      }
+  52          
+  53          
+  54          //定时器中断
+C51 COMPILER V9.59.0.0   PROJECT                                                           04/17/2022 16:51:20 PAGE 2   
+
+  55          void timer_isr() interrupt 1
+  56          {
+  57   1        TH0=0x3c;
+  58   1        T0=0xb0;
+  59   1        count++;
+  60   1        if(count==20)
+  61   1      
+  62   1      
+  63   1        {
+  64   2          P2=st[num++];
+  65   2          if(num==8)
+  66   2          {
+  67   3            num=0;
+  68   3          }
+  69   2          count=0;
+  70   2        }
+  71   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    142    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

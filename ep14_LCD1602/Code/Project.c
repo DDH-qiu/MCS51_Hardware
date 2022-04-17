@@ -70,7 +70,7 @@ void display()
 	writedat('g');
 	delay(5);
 	writecom(0x80+0X40+3);//第二行显示中间
-	while(str[i]!='\0')
+	while(str[i]!='\0')//判断是否换行
 	{
 		writedat(str[i]);
 		delay(5);
