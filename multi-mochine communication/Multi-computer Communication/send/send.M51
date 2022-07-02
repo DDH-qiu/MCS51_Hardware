@@ -1,0 +1,319 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/20/2020  11:20:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+E:\KEIL\C51\BIN\BL51.EXE send.obj, lcd1602.obj TO send
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  send.obj (SEND)
+  lcd1602.obj (LCD1602)
+  E:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  E:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  send (SEND)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0031H     UNIT         ?DT?SEND
+            DATA    0039H     0003H     UNIT         _DATA_GROUP_
+            IDATA   003CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     0014H     UNIT         ?PR?INITLCD?LCD1602
+            CODE    001AH     0008H     UNIT         ?PR?_WRITEDAT?LCD1602
+                    0022H     0001H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+            CODE    0026H     008CH     UNIT         ?C_C51STARTUP
+            CODE    00B2H     0084H     UNIT         ?PR?DISPLAY?SEND
+            CODE    0136H     0042H     UNIT         ?C_INITSEG
+            CODE    0178H     003EH     UNIT         ?PR?SENDDAT_FUNCTION?SEND
+            CODE    01B6H     002EH     UNIT         ?PR?SCON_ISR?SEND
+            CODE    01E4H     002CH     UNIT         ?PR?_DELAY?LCD1602
+            CODE    0210H     0013H     UNIT         ?PR?INITSCON?SEND
+            CODE    0223H     0011H     UNIT         ?PR?MAIN?SEND
+            CODE    0234H     0008H     UNIT         ?PR?_WRITECOM?LCD1602
+            CODE    023CH     0005H     UNIT         ?PR?INITEX0?SEND
+            CODE    0241H     0004H     UNIT         ?PR?EX0_ISR?SEND
+
+
+
+OVERLAY MAP OF MODULE:   send (SEND)
+
+
+SEGMENT                             DATA_GROUP 
+  +--> CALLED SEGMENT             START    LENGTH
+-------------------------------------------------
+?C_C51STARTUP                     -----    -----
+  +--> ?PR?MAIN?SEND
+  +--> ?C_INITSEG
+
+?PR?MAIN?SEND                     -----    -----
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/20/2020  11:20:32  PAGE 2
+
+
+  +--> ?PR?INITSCON?SEND
+  +--> ?PR?INITEX0?SEND
+  +--> ?PR?INITLCD?LCD1602
+  +--> ?PR?SENDDAT_FUNCTION?SEND
+  +--> ?PR?DISPLAY?SEND
+
+?PR?INITLCD?LCD1602               -----    -----
+  +--> ?PR?_WRITECOM?LCD1602
+
+?PR?_WRITECOM?LCD1602             -----    -----
+  +--> ?PR?_DELAY?LCD1602
+
+?PR?DISPLAY?SEND                  0039H    0003H
+  +--> ?PR?_WRITECOM?LCD1602
+  +--> ?PR?_DELAY?LCD1602
+  +--> ?PR?_WRITEDAT?LCD1602
+
+?PR?_WRITEDAT?LCD1602             -----    -----
+  +--> ?PR?_DELAY?LCD1602
+
+
+
+SYMBOL TABLE OF MODULE:  send (SEND)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SEND
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  B:00A8H.7       PUBLIC        EA
+  D:0008H         PUBLIC        str1
+  D:0013H         PUBLIC        str2
+  B:00A8H.4       PUBLIC        ES
+  B:0098H.0       PUBLIC        RI
+  D:001EH         PUBLIC        flag
+  B:0098H.1       PUBLIC        TI
+  D:001FH         PUBLIC        lenth
+  C:0223H         PUBLIC        main
+  D:0020H         PUBLIC        count
+  D:0099H         PUBLIC        SBUF
+  C:0178H         PUBLIC        senddat_function
+  D:0098H         PUBLIC        SCON
+  D:0021H         PUBLIC        flagready
+  D:0089H         PUBLIC        TMOD
+  C:0241H         PUBLIC        ex0_isr
+  B:0088H.1       PUBLIC        IE0
+  C:023CH         PUBLIC        initex0
+  B:00A8H.0       PUBLIC        EX0
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:0022H         PUBLIC        str
+  C:01B6H         PUBLIC        scon_isr
+  C:0210H         PUBLIC        initscon
+  D:002DH         PUBLIC        recdat
+  C:00B2H         PUBLIC        display
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/20/2020  11:20:32  PAGE 3
+
+
+  -------         PROC          INITSCON
+  C:0210H         LINE#         9
+  C:0210H         LINE#         10
+  C:0210H         LINE#         11
+  C:0213H         LINE#         12
+  C:0216H         LINE#         13
+  C:0219H         LINE#         14
+  C:021CH         LINE#         15
+  C:021EH         LINE#         16
+  C:0220H         LINE#         17
+  C:0222H         LINE#         18
+  -------         ENDPROC       INITSCON
+  -------         PROC          INITEX0
+  C:023CH         LINE#         20
+  C:023CH         LINE#         21
+  C:023CH         LINE#         22
+  C:023EH         LINE#         23
+  C:0240H         LINE#         24
+  -------         ENDPROC       INITEX0
+  -------         PROC          SENDDAT_FUNCTION
+  -------         DO            
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:0178H         LINE#         26
+  C:0178H         LINE#         27
+  C:0178H         LINE#         28
+  C:017AH         LINE#         29
+  C:017FH         LINE#         30
+  C:017FH         LINE#         31
+  C:0185H         LINE#         32
+  C:0185H         LINE#         33
+  C:018CH         LINE#         34
+  C:018FH         LINE#         35
+  C:0191H         LINE#         36
+  C:0194H         LINE#         37
+  C:0197H         LINE#         38
+  C:0197H         LINE#         39
+  C:019CH         LINE#         40
+  C:019CH         LINE#         41
+  C:01A4H         LINE#         42
+  C:01A4H         LINE#         43
+  C:01AAH         LINE#         44
+  C:01ADH         LINE#         45
+  C:01B0H         LINE#         46
+  C:01B3H         LINE#         47
+  C:01B5H         LINE#         48
+  C:01B5H         LINE#         49
+  -------         ENDPROC       SENDDAT_FUNCTION
+  -------         PROC          DISPLAY
+  -------         DO            
+  D:0039H         SYMBOL        i
+  D:003AH         SYMBOL        j
+  D:003BH         SYMBOL        k
+  -------         ENDDO         
+  C:00B2H         LINE#         51
+  C:00B2H         LINE#         52
+  C:00B2H         LINE#         53
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/20/2020  11:20:32  PAGE 4
+
+
+  C:00B9H         LINE#         54
+  C:00BFH         LINE#         55
+  C:00BFH         LINE#         56
+  C:00C4H         LINE#         57
+  C:00CBH         LINE#         58
+  C:00D5H         LINE#         59
+  C:00D5H         LINE#         60
+  C:00DFH         LINE#         61
+  C:00E6H         LINE#         62
+  C:00EAH         LINE#         63
+  C:00EFH         LINE#         64
+  C:00F6H         LINE#         65
+  C:00FEH         LINE#         66
+  C:00FEH         LINE#         67
+  C:0107H         LINE#         68
+  C:0107H         LINE#         69
+  C:010AH         LINE#         70
+  C:0111H         LINE#         71
+  C:0113H         LINE#         72
+  C:0115H         LINE#         73
+  C:0115H         LINE#         74
+  C:011EH         LINE#         75
+  C:011EH         LINE#         76
+  C:0127H         LINE#         77
+  C:0127H         LINE#         78
+  C:012AH         LINE#         79
+  C:0131H         LINE#         80
+  C:0133H         LINE#         81
+  C:0135H         LINE#         82
+  C:0135H         LINE#         83
+  C:0135H         LINE#         84
+  -------         ENDPROC       DISPLAY
+  -------         PROC          MAIN
+  C:0223H         LINE#         86
+  C:0223H         LINE#         87
+  C:0223H         LINE#         88
+  C:0226H         LINE#         89
+  C:0229H         LINE#         90
+  C:022CH         LINE#         91
+  C:022CH         LINE#         92
+  C:022CH         LINE#         93
+  C:022FH         LINE#         94
+  C:0232H         LINE#         95
+  -------         ENDPROC       MAIN
+  -------         PROC          EX0_ISR
+  C:0241H         LINE#         98
+  C:0241H         LINE#         100
+  C:0244H         LINE#         101
+  -------         ENDPROC       EX0_ISR
+  -------         PROC          SCON_ISR
+  C:01B6H         LINE#         103
+  C:01C1H         LINE#         105
+  C:01CBH         LINE#         106
+  C:01CDH         LINE#         107
+  C:01D0H         LINE#         108
+  C:01D5H         LINE#         109
+  C:01D5H         LINE#         110
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/20/2020  11:20:32  PAGE 5
+
+
+  C:01D8H         LINE#         111
+  C:01DBH         LINE#         112
+  C:01DBH         LINE#         113
+  -------         ENDPROC       SCON_ISR
+  -------         ENDMOD        SEND
+
+  -------         MODULE        LCD1602
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:01F0H         PUBLIC        _delay
+  B:0090H.0       PUBLIC        RS
+  B:0090H.1       PUBLIC        RW
+  B:0090H.2       PUBLIC        E
+  C:001AH         PUBLIC        _writedat
+  C:0006H         PUBLIC        initlcd
+  C:0234H         PUBLIC        _writecom
+  -------         PROC          L?0013
+  -------         ENDPROC       L?0013
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:01F0H         LINE#         3
+  C:01F0H         LINE#         4
+  C:01F0H         LINE#         5
+  C:01F3H         LINE#         6
+  C:01FAH         LINE#         7
+  C:01FAH         LINE#         8
+  C:0208H         LINE#         9
+  C:020FH         LINE#         10
+  -------         ENDPROC       _DELAY
+  -------         PROC          _WRITEDAT
+  D:0007H         SYMBOL        dat
+  C:001AH         LINE#         12
+  C:001AH         LINE#         13
+  C:001AH         LINE#         14
+  C:001CH         LINE#         15
+  C:001CH         LINE#         16
+  C:001CH         LINE#         17
+  C:001CH         LINE#         18
+  C:001CH         LINE#         19
+  C:001FH         LINE#         20
+  C:0021H         LINE#         21
+  -------         ENDPROC       _WRITEDAT
+  -------         PROC          _WRITECOM
+  D:0007H         SYMBOL        com
+  C:0234H         LINE#         23
+  C:0234H         LINE#         24
+  C:0234H         LINE#         25
+  C:0236H         LINE#         26
+  C:0236H         LINE#         27
+  C:0236H         LINE#         28
+  C:0236H         LINE#         29
+  C:0236H         LINE#         30
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/20/2020  11:20:32  PAGE 6
+
+
+  C:0239H         LINE#         31
+  C:023BH         LINE#         32
+  -------         ENDPROC       _WRITECOM
+  -------         PROC          INITLCD
+  C:0006H         LINE#         34
+  C:0006H         LINE#         35
+  C:0006H         LINE#         36
+  C:000BH         LINE#         37
+  C:0010H         LINE#         38
+  C:0015H         LINE#         39
+  -------         ENDPROC       INITLCD
+  -------         ENDMOD        LCD1602
+
+Program Size: data=61.0 xdata=0 code=580
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

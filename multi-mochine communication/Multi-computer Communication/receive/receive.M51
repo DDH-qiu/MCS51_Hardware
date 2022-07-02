@@ -1,0 +1,237 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/20/2020  11:26:52  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+E:\KEIL\C51\BIN\BL51.EXE lcd1602.obj, receive.obj TO receive
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  lcd1602.obj (LCD1602)
+  receive.obj (RECEIVE)
+  E:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  E:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  receive (LCD1602)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     001DH     UNIT         ?DT?RECEIVE
+            DATA    0025H     0002H     UNIT         _DATA_GROUP_
+            IDATA   0027H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0014H     UNIT         ?PR?INITLCD?LCD1602
+            CODE    0017H     000BH     UNIT         ?PR?MAIN?RECEIVE
+                    0022H     0001H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+            CODE    0026H     008CH     UNIT         ?C_C51STARTUP
+            CODE    00B2H     0065H     UNIT         ?PR?DISPLAY?RECEIVE
+            CODE    0117H     002CH     UNIT         ?PR?_DELAY?LCD1602
+            CODE    0143H     0026H     UNIT         ?C_INITSEG
+            CODE    0169H     0023H     UNIT         ?PR?SCON_ISR?RECEIVE
+            CODE    018CH     0013H     UNIT         ?PR?INITSCON?RECEIVE
+            CODE    019FH     0008H     UNIT         ?PR?_WRITEDAT?LCD1602
+            CODE    01A7H     0008H     UNIT         ?PR?_WRITECOM?LCD1602
+
+
+
+OVERLAY MAP OF MODULE:   receive (LCD1602)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?RECEIVE
+  +--> ?C_INITSEG
+
+?PR?MAIN?RECEIVE               -----    -----
+  +--> ?PR?INITSCON?RECEIVE
+  +--> ?PR?INITLCD?LCD1602
+  +--> ?PR?DISPLAY?RECEIVE
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/20/2020  11:26:52  PAGE 2
+
+
+?PR?INITLCD?LCD1602            -----    -----
+  +--> ?PR?_WRITECOM?LCD1602
+
+?PR?_WRITECOM?LCD1602          -----    -----
+  +--> ?PR?_DELAY?LCD1602
+
+?PR?DISPLAY?RECEIVE            0025H    0002H
+  +--> ?PR?_WRITECOM?LCD1602
+  +--> ?PR?_DELAY?LCD1602
+  +--> ?PR?_WRITEDAT?LCD1602
+
+?PR?_WRITEDAT?LCD1602          -----    -----
+  +--> ?PR?_DELAY?LCD1602
+
+
+
+SYMBOL TABLE OF MODULE:  receive (LCD1602)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LCD1602
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:0123H         PUBLIC        _delay
+  B:0090H.0       PUBLIC        RS
+  B:0090H.1       PUBLIC        RW
+  B:0090H.2       PUBLIC        E
+  C:019FH         PUBLIC        _writedat
+  C:0003H         PUBLIC        initlcd
+  C:01A7H         PUBLIC        _writecom
+  -------         PROC          L?0013
+  -------         ENDPROC       L?0013
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        t
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0123H         LINE#         3
+  C:0123H         LINE#         4
+  C:0123H         LINE#         5
+  C:0126H         LINE#         6
+  C:012DH         LINE#         7
+  C:012DH         LINE#         8
+  C:013BH         LINE#         9
+  C:0142H         LINE#         10
+  -------         ENDPROC       _DELAY
+  -------         PROC          _WRITEDAT
+  D:0007H         SYMBOL        dat
+  C:019FH         LINE#         12
+  C:019FH         LINE#         13
+  C:019FH         LINE#         14
+  C:01A1H         LINE#         15
+  C:01A1H         LINE#         16
+  C:01A1H         LINE#         17
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/20/2020  11:26:52  PAGE 3
+
+
+  C:01A1H         LINE#         18
+  C:01A1H         LINE#         19
+  C:01A4H         LINE#         20
+  C:01A6H         LINE#         21
+  -------         ENDPROC       _WRITEDAT
+  -------         PROC          _WRITECOM
+  D:0007H         SYMBOL        com
+  C:01A7H         LINE#         23
+  C:01A7H         LINE#         24
+  C:01A7H         LINE#         25
+  C:01A9H         LINE#         26
+  C:01A9H         LINE#         27
+  C:01A9H         LINE#         28
+  C:01A9H         LINE#         29
+  C:01A9H         LINE#         30
+  C:01ACH         LINE#         31
+  C:01AEH         LINE#         32
+  -------         ENDPROC       _WRITECOM
+  -------         PROC          INITLCD
+  C:0003H         LINE#         34
+  C:0003H         LINE#         35
+  C:0003H         LINE#         36
+  C:0008H         LINE#         37
+  C:000DH         LINE#         38
+  C:0012H         LINE#         39
+  -------         ENDPROC       INITLCD
+  -------         ENDMOD        LCD1602
+
+  -------         MODULE        RECEIVE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  B:00A8H.7       PUBLIC        EA
+  B:00A8H.4       PUBLIC        ES
+  B:0098H.0       PUBLIC        RI
+  D:0008H         PUBLIC        flag
+  C:0017H         PUBLIC        main
+  D:0009H         PUBLIC        count
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:000AH         PUBLIC        str
+  C:0169H         PUBLIC        scon_isr
+  C:018CH         PUBLIC        initscon
+  D:0019H         PUBLIC        recdat
+  C:00B2H         PUBLIC        display
+  -------         PROC          INITSCON
+  C:018CH         LINE#         7
+  C:018CH         LINE#         8
+  C:018CH         LINE#         9
+  C:018FH         LINE#         10
+  C:0192H         LINE#         11
+  C:0195H         LINE#         12
+  C:0198H         LINE#         13
+  C:019AH         LINE#         14
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/20/2020  11:26:52  PAGE 4
+
+
+  C:019CH         LINE#         15
+  C:019EH         LINE#         16
+  -------         ENDPROC       INITSCON
+  -------         PROC          DISPLAY
+  -------         DO            
+  D:0025H         SYMBOL        i
+  D:0026H         SYMBOL        j
+  -------         ENDDO         
+  C:00B2H         LINE#         18
+  C:00B2H         LINE#         19
+  C:00B2H         LINE#         20
+  C:00B7H         LINE#         21
+  C:00BCH         LINE#         22
+  C:00C3H         LINE#         23
+  C:00C6H         LINE#         24
+  C:00C6H         LINE#         25
+  C:00D0H         LINE#         26
+  C:00D7H         LINE#         27
+  C:00E0H         LINE#         28
+  C:00E6H         LINE#         29
+  C:00E6H         LINE#         30
+  C:00EBH         LINE#         31
+  C:00F2H         LINE#         32
+  C:00FCH         LINE#         33
+  C:00FCH         LINE#         34
+  C:0106H         LINE#         35
+  C:010DH         LINE#         36
+  C:0111H         LINE#         37
+  C:0114H         LINE#         38
+  C:0116H         LINE#         39
+  C:0116H         LINE#         40
+  -------         ENDPROC       DISPLAY
+  -------         PROC          MAIN
+  C:0017H         LINE#         42
+  C:0017H         LINE#         43
+  C:0017H         LINE#         44
+  C:001AH         LINE#         45
+  C:001DH         LINE#         46
+  C:001DH         LINE#         47
+  C:001DH         LINE#         48
+  C:0020H         LINE#         49
+  -------         ENDPROC       MAIN
+  -------         PROC          SCON_ISR
+  C:0169H         LINE#         52
+  C:0174H         LINE#         54
+  C:017EH         LINE#         55
+  C:0180H         LINE#         56
+  C:0183H         LINE#         57
+  -------         ENDPROC       SCON_ISR
+  -------         ENDMOD        RECEIVE
+
+Program Size: data=40.0 xdata=0 code=430
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
