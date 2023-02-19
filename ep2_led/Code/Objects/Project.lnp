@@ -1,6 +1,0 @@
-".\Objects\main.obj",
-".\Objects\Delayms.obj",
-".\Objects\Delayus.obj" 
-TO ".\Objects\Project" 
-PRINT(".\Listings\Project.m51") RAMSIZE(256) 
-DISABLEWARNING (16) 
