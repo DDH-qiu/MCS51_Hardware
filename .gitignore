@@ -4,3 +4,4 @@ Objects/
 *.DDH-qiu
 *.workspace
 *.a51
+.gitignore
