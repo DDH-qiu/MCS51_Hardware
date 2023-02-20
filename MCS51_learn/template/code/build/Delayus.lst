@@ -1,0 +1,39 @@
+C51 COMPILER V9.54   DELAYUS                                                               02/20/2023 13:59:07 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE DELAYUS
+OBJECT MODULE PLACED IN .\build\Delayus.obj
+COMPILER INVOKED BY: C:\Program Files\MDK\C51\BIN\C51.EXE Src\Delayus.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Inc) DEBUG OBJ
+                    -ECTEXTEND PRINT(.\build\Delayus.lst) TABS(2) OBJECT(.\build\Delayus.obj)
+
+line level    source
+
+   1          #include"Delayus.h"
+   2          #include"intrins.h"
+   3          
+   4          void Delayus(unsigned char xus)
+   5          {
+   6   1          while(xus)
+   7   1          {
+   8   2              unsigned char i;
+   9   2      
+  10   2            _nop_();
+  11   2            i = 25;
+  12   2            while (--i);
+  13   2              xus--;
+  14   2          }
+  15   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     14    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

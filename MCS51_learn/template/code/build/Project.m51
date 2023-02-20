@@ -1,0 +1,169 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/20/2023  14:02:06  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\PROGRAM FILES\MDK\C51\BIN\BL51.EXE .\build\main.obj, .\build\Delayms.obj, .\build\Delayus.obj TO .\build\Project PRIN
+>> T (.\build\Project.m51) RAMSIZE (256) DISABLEWARNING (16)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\build\main.obj (MAIN)
+  .\build\Delayms.obj (DELAYMS)
+  .\build\Delayus.obj (DELAYUS)
+  C:\PROGRAM FILES\MDK\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\build\Project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?_DELAYUS?DELAYUS
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0025H     UNIT         ?PR?LED?MAIN
+            CODE    0825H     0020H     UNIT         ?PR?_DELAY?MAIN
+            CODE    0845H     0012H     UNIT         ?PR?_DELAYMS?DELAYMS
+            CODE    0857H     000EH     UNIT         ?PR?_DELAYUS?DELAYUS
+            CODE    0865H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0871H     0005H     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\build\Project (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?LED?MAIN
+
+?PR?LED?MAIN
+  +--> ?PR?_DELAY?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\build\Project (MAIN)
+
+  VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/20/2023  14:02:06  PAGE 2
+
+
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:0825H         PUBLIC        _delay
+  C:0871H         PUBLIC        main
+  C:0800H         PUBLIC        led
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        n
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0825H         LINE#         6
+  C:0825H         LINE#         7
+  C:0825H         LINE#         8
+  C:0828H         LINE#         9
+  C:082FH         LINE#         10
+  C:082FH         LINE#         11
+  C:083DH         LINE#         12
+  C:0844H         LINE#         13
+  -------         ENDPROC       _DELAY
+  -------         PROC          LED
+  -------         DO            
+  D:0082H         SYMBOL        i
+  -------         ENDDO         
+  C:0800H         LINE#         18
+  C:0800H         LINE#         19
+  C:0800H         LINE#         20
+  C:0800H         LINE#         21
+  C:0805H         LINE#         22
+  C:0805H         LINE#         23
+  C:0814H         LINE#         24
+  C:081BH         LINE#         25
+  C:0824H         LINE#         26
+  -------         ENDPROC       LED
+  -------         PROC          MAIN
+  C:0871H         LINE#         30
+  C:0871H         LINE#         31
+  C:0871H         LINE#         32
+  C:0871H         LINE#         33
+  C:0871H         LINE#         34
+  C:0874H         LINE#         35
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        DELAYMS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0845H         PUBLIC        _Delayms
+  -------         PROC          _DELAYMS
+  D:0007H         SYMBOL        xms
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0005H         SYMBOL        j
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/20/2023  14:02:06  PAGE 3
+
+
+  C:0845H         LINE#         4
+  C:0845H         LINE#         5
+  C:0845H         LINE#         7
+  C:0846H         LINE#         8
+  C:0847H         LINE#         9
+  C:0848H         LINE#         10
+  C:084BH         LINE#         11
+  C:084BH         LINE#         12
+  C:084DH         LINE#         13
+  C:084FH         LINE#         15
+  C:084FH         LINE#         16
+  C:0851H         LINE#         17
+  C:0853H         LINE#         18
+  C:0854H         LINE#         19
+  C:0856H         LINE#         21
+  -------         ENDPROC       _DELAYMS
+  -------         ENDMOD        DELAYMS
+
+  -------         MODULE        DELAYUS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0857H         PUBLIC        _Delayus
+  -------         PROC          _DELAYUS
+  D:0007H         SYMBOL        xus
+  -------         DO            
+  D:0008H         SYMBOL        i
+  -------         ENDDO         
+  C:0857H         LINE#         4
+  C:0857H         LINE#         5
+  C:0857H         LINE#         6
+  C:085AH         LINE#         7
+  C:085AH         LINE#         10
+  C:085BH         LINE#         11
+  C:085EH         LINE#         12
+  C:0861H         LINE#         13
+  C:0862H         LINE#         14
+  C:0864H         LINE#         15
+  -------         ENDPROC       _DELAYUS
+  -------         ENDMOD        DELAYUS
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 006AH BYTE ( 5%) *
+******************************************************************************
+
+Program Size: data=10.0 xdata=0 code=121
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,6 @@
+".\build\main.obj",
+".\build\Delayms.obj",
+".\build\Delayus.obj" 
+TO ".\build\Project" 
+PRINT(".\build\Project.m51") RAMSIZE(256) 
+DISABLEWARNING (16) 
